@@ -40,16 +40,14 @@ function agregarEstudiante() {
       document.getElementById('DNI').value = "";
     }
   }
-
-  // Funcion para listar los estudiantes
-function listarEstudiantes() {
+  function listarEstudiantes() {
     if (curso.length === 0) {
-      alert("No hay estudiantes para mostrar");
+      alert("No hay estudiantes para mostrar");//me lo muestra si elimino el unico alumno, chequear
     } else {
       const contenedorEstudiantes = document.getElementById('estudiantesContainer');
-      contenedorEstudiantes.innerHTML = ''; // Limpiar el contenido del contenedor
+      contenedorEstudiantes.innerHTML = '';
   
-      curso.forEach((estudiante) => {
+      curso.forEach((estudiante, index) => {
         // Crea una card por estudiante
         const tarjeta = document.createElement('div');
         tarjeta.className = 'card text-bg-info mb-3';
@@ -70,8 +68,18 @@ function listarEstudiantes() {
         texto.className = 'card-text';
         texto.textContent = `DNI: ${estudiante.dni}, Comisión: ${estudiante.comision}`;
   
+        // Boton eliminar en la card
+        const botonEliminar = document.createElement('button');
+        botonEliminar.className = 'btn btn-danger';
+        botonEliminar.textContent = 'Eliminar';
+
+
+        // Evento para eliminar
+        botonEliminar.addEventListener('click', () => eliminarEstudiante(index));
+  
         tarjetaBody.appendChild(titulo);
         tarjetaBody.appendChild(texto);
+        tarjetaBody.appendChild(botonEliminar);// este es el boton eliminar, no confundir
         tarjeta.appendChild(tarjetaHeader);
         tarjeta.appendChild(tarjetaBody);
   
@@ -81,6 +89,13 @@ function listarEstudiantes() {
     }
   }
   
+  // Función para eliminar un estudiante del array curso
+  function eliminarEstudiante(index) {
+    curso.splice(index, 1); // Eliminar el estudiante del array en la posición index
+    listarEstudiantes(); // Volver a mostrar la lista actualizada
+  }
+  
+
   
 
   
