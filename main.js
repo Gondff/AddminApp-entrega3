@@ -40,6 +40,27 @@ function agregarEstudiante() {
       document.getElementById('DNI').value = "";
     }
   }
+
+  //si no estan en esta posicion no funciona, preguntar por que?
+
+  // Cargar datos desde el localStorage al array curso
+function cargarDesdeLocalStorage() {
+    const estudiantesGuardados = localStorage.getItem('curso');
+    if (estudiantesGuardados) {
+      curso = JSON.parse(estudiantesGuardados);
+    }
+  }
+  
+  // Guardar datos del array curso en el localStorage
+  function guardarEnLocalStorage() {
+    localStorage.setItem('curso', JSON.stringify(curso));
+    alert('Estudiantes guardados en el LocalStorage');
+  }
+
+
+
+
+
   function listarEstudiantes() {
     if (curso.length === 0) {
       alert("No hay estudiantes para mostrar");//me lo muestra si elimino el unico alumno, chequear
@@ -95,6 +116,7 @@ function agregarEstudiante() {
     listarEstudiantes(); // Volver a mostrar la lista actualizada
   }
   
+  
 
   
 
@@ -118,6 +140,14 @@ function buscarEstudiantePorDni(){
     }
 }
 
+function borrarLocalStorage() {
+    localStorage.removeItem('curso');
+    curso =[];//sin esto no se borra si las cards no estan visibles
+    alert("Se ha borrado todo el contenido del LocalStorage");
+  }
+  
 
 
 
+// Cargar datos del localStorage al array curso cuando inicia
+cargarDesdeLocalStorage();
