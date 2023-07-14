@@ -27,7 +27,9 @@ function agregarEstudiante() {
   
     if (!nombre || !apellido || !dni) {
       alert("Debe ingresar todos los datos del estudiante");
-    } else {
+    } else if (dniDuplicado(dni)){
+        alert("ya existe un alumno con ese DNI")
+    }else {
       const nuevoEstudiante = new Estudiante(nombre, apellido, dni);
       generarComision(nuevoEstudiante);
   
@@ -58,7 +60,9 @@ function cargarDesdeLocalStorage() {
   }
 
 
-
+function dniDuplicado(dni){
+    return curso.some((estudiante) => estudiante.dni === dni);
+}
 
 
   function listarEstudiantes() {
@@ -118,27 +122,11 @@ function cargarDesdeLocalStorage() {
   
   
 
-  
+
 
   
 
-//Funcion para buscar estudiante por DNI
-function buscarEstudiantePorDni(){
-    let dniBuscado = parseInt(prompt("Ingrese el DNI que desea buscar"));
 
-    let estudianteEncontrado = curso.find((estudiante) => estudiante.dni === dniBuscado);
-
-    if(estudianteEncontrado){
-        let datosDni = "Estudiante encontrado:\n\n";
-        datosDni += `Nombre: ${estudianteEncontrado.nombre}\n`;
-        datosDni += `Apellido: ${estudianteEncontrado.apellido}\n`;
-        datosDni += `DNI: ${estudianteEncontrado.dni}\n`;
-        datosDni += `Comision: ${estudianteEncontrado.comision}\n`;
-        return alert(datosDni)
-    }else{
-        return alert("DNI no encontrado");
-    }
-}
 
 function borrarLocalStorage() {
     localStorage.removeItem('curso');

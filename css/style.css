@@ -81,15 +81,18 @@
   }
   .form {
       text-align: center;
+    
     }
     
     .inputs {
       border-radius: 10px;
       padding: 5px;
+      background-color: lightblue;
     }
     
     .smaller {
       font-size: 12px;
+      background-color: rgb(0, 174, 255);
     }
     
     .grupo {
@@ -102,17 +105,11 @@
     .grupo div {
       margin-bottom: 10px;
     }
-    
-    .grupo input[type="submit"] {
-      margin-top: 10px;
-      background-color: lightgreen;
-      border: none;
-      color: #ffffff;
+
+    .etiquetas{
+        background-color: lightblue;
     }
-    
-    .grupo input[type="submit"]:hover {
-      cursor: pointer;
-    }
+
     
     
   
