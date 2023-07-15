@@ -120,6 +120,7 @@ function dniDuplicado(dni){
     listarEstudiantes(); // Volver a mostrar la lista actualizada
   }
   
+  //Funcion para buscar el alumno por DNI
   function buscarEstudiantePorDni() {
     let dniBuscado = parseInt(document.getElementById('buscarDNI').value);
     const estudianteEncontrado = curso.find((estudiante) => estudiante.dni === dniBuscado);
