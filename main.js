@@ -120,6 +120,44 @@ function dniDuplicado(dni){
     listarEstudiantes(); // Volver a mostrar la lista actualizada
   }
   
+  function buscarEstudiantePorDni() {
+    let dniBuscado = parseInt(document.getElementById('buscarDNI').value);
+    const estudianteEncontrado = curso.find((estudiante) => estudiante.dni === dniBuscado);
+  
+    if (estudianteEncontrado) {
+      const contenedorEstudiantes = document.getElementById('estudiantesContainer');
+      contenedorEstudiantes.innerHTML = '';
+  
+      const tarjeta = document.createElement('div');
+      tarjeta.className = 'card text-bg-info mb-3';
+      tarjeta.style = 'max-width: 18rem;';
+  
+      const tarjetaHeader = document.createElement('div');
+      tarjetaHeader.className = 'card-header';
+      tarjetaHeader.textContent = 'Estudiante';
+  
+      const tarjetaBody = document.createElement('div');
+      tarjetaBody.className = 'card-body';
+  
+      const titulo = document.createElement('h5');
+      titulo.className = 'card-title';
+      titulo.textContent = `${estudianteEncontrado.nombre} ${estudianteEncontrado.apellido}`;
+  
+      const texto = document.createElement('p');
+      texto.className = 'card-text';
+      texto.textContent = `DNI: ${estudianteEncontrado.dni}, Comisión: ${estudianteEncontrado.comision}`;
+  
+      tarjetaBody.appendChild(titulo);
+      tarjetaBody.appendChild(texto);
+      tarjeta.appendChild(tarjetaHeader);
+      tarjeta.appendChild(tarjetaBody);
+  
+      contenedorEstudiantes.appendChild(tarjeta);
+    } else {
+      alert("DNI no encontrado");
+    }
+  }
+  
   
 
 

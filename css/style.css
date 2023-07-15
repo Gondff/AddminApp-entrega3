@@ -110,6 +110,14 @@
         background-color: lightblue;
     }
 
+    .estudiantes-container{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .card{
+        margin: 3px;
+    }
     
     
   
